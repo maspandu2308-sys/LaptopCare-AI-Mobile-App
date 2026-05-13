@@ -8,18 +8,23 @@ import { DiagnosisResultScreen } from "./components/DiagnosisResultScreen";
 import { HistoryScreen } from "./components/HistoryScreen";
 import { AboutScreen } from "./components/AboutScreen";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Layout,
+      children: [
+        { index: true, Component: SplashScreen },
+        { path: "onboarding", Component: OnboardingScreen },
+        { path: "home", Component: HomeScreen },
+        { path: "diagnosa", Component: SelectSymptomsScreen },
+        { path: "hasil", Component: DiagnosisResultScreen },
+        { path: "riwayat", Component: HistoryScreen },
+        { path: "tentang", Component: AboutScreen },
+      ],
+    },
+  ],
   {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: SplashScreen },
-      { path: "onboarding", Component: OnboardingScreen },
-      { path: "home", Component: HomeScreen },
-      { path: "diagnosa", Component: SelectSymptomsScreen },
-      { path: "hasil", Component: DiagnosisResultScreen },
-      { path: "riwayat", Component: HistoryScreen },
-      { path: "tentang", Component: AboutScreen },
-    ],
+    basename: import.meta.env.BASE_URL,
   },
-]);
+);
